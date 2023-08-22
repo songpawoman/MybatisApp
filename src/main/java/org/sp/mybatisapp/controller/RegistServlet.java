@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.sp.mybatisapp.domain.Board;
-import org.sp.mybatisapp.repository.BoardDAO;
+import org.sp.mybatisapp.repository.MySQLBoardDAO;
 
 //글쓰기 요청을 처리하는 서블릿 ( JSP로 작성해도 되지만
 //공부목적상 일부러 서블릿..)
 public class RegistServlet extends HttpServlet{
-	BoardDAO boardDAO = new BoardDAO();
+	MySQLBoardDAO boardDAO = new MySQLBoardDAO();
 	
 	//파라미터 받기 
 	@Override

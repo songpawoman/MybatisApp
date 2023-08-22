@@ -8,7 +8,7 @@
 	MyBatis 프레임웍을 가리켜 SQL Mapper라 하며 
 	Hibernate 를 가리켜 ORM 이라 한다 
 	 -->
-	<insert id="insert" parameterType="org.sp.mybatisapp.domain.Board">
+	<insert id="insert" parameterType="Board">
 		insert into board(title, writer, content) values(#{title},#{writer},#{content})
 	</insert>
 	

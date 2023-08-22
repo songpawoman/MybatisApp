@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +78,7 @@ $(function(){
 			<input type="button" value="등록하기" id="bt_regist">
 		</form>
 	</div>
-
+	<%@ include file="/inc/footer.jsp" %>
 </body>
 </html>
 

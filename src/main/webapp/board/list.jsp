@@ -1,12 +1,10 @@
 <%@page import="org.sp.mybatisapp.domain.Board"%>
 <%@page import="java.util.List"%>
-<%@page import="org.sp.mybatisapp.repository.BoardDAO"%>
+<%@page import="org.sp.mybatisapp.repository.MySQLBoardDAO"%>
 <%@page import="org.sp.mybatisapp.util.Pager"%>
-<%@ page contentType="text/html; charset=utf-8"%>
-<%!
-	Pager pager=new Pager();
-	BoardDAO boardDAO=new BoardDAO();
-%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%!Pager pager=new Pager();
+	MySQLBoardDAO boardDAO=new MySQLBoardDAO();%>
 <%
 	//레코드 가져오기 
 	List<Board> boardList =boardDAO.selectAll();
@@ -86,8 +84,15 @@ $(function(){
 				<button>글쓰기</button>
 			</td>
 		</tr>
-
 	</table>
-
+	<%@ include file="/inc/footer.jsp" %>
+	
 </body>
 </html>
+
+
+
+
+
+
+
