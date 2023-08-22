@@ -1,3 +1,4 @@
+<%@page import="org.sp.mybatisapp.domain.Board"%>
 <%@page import="java.util.List"%>
 <%@page import="org.sp.mybatisapp.repository.BoardDAO"%>
 <%@page import="org.sp.mybatisapp.util.Pager"%>
@@ -8,7 +9,7 @@
 %>
 <%
 	//레코드 가져오기 
-	List boardList =boardDAO.selectAll();
+	List<Board> boardList =boardDAO.selectAll();
 
 	//리스트 페이징 처리에 필요한 산수공식
 	pager.init(boardList, request);
@@ -56,15 +57,19 @@ $(function(){
 			<th>등록일</th>
 			<th>조회수</th>
 		</tr>
-		<%int num=pager.getNum();%>
+		<%
+			int num=pager.getNum(); //페이지당 시작 번호 
+			int curPos=pager.getCurPos(); //페이지당 시작  index
+		%>
 		<%for(int i=1;i<=pager.getPageSize();i++){%>
 		<%if(num<1)break; %>
+		<%Board board=boardList.get(curPos++); %>
 		<tr>
 			<td><%=num-- %></td>
-			<td>Smith</td>
-			<td>50</td>
-			<td>50</td>
-			<td>50</td>
+			<td><a href="/board/content.jsp?board_idx=<%=board.getBoard_idx()%>"><%=board.getTitle()%></a></td>
+			<td><%=board.getWriter() %></td>
+			<td><%=board.getRegdate().substring(0, 10) %></td>
+			<td><%=board.getHit() %></td>
 		</tr>
 		<%} %>
 		<tr>

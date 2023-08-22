@@ -30,7 +30,8 @@ public class BoardDAO {
 	
 	//글한건 보기 
 	public Board select(int board_idx) {
-		return null;
+		SqlSession sqlSession=config.getSqlSession();
+		return sqlSession.selectOne("Board.select", board_idx);
 	}
 	
 	// 한건 수정

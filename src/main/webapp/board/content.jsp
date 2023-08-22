@@ -1,5 +1,14 @@
+<%@page import="org.sp.mybatisapp.domain.Board"%>
+<%@page import="org.sp.mybatisapp.repository.BoardDAO"%>
 <%@ page contentType="text/html; charset=utf-8"%>
-
+<%! BoardDAO boardDAO = new BoardDAO();%>
+<%
+	int board_idx = Integer.parseInt(request.getParameter("board_idx"));
+	out.print(board_idx);
+	
+	Board board=boardDAO.select(board_idx);
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,9 +57,9 @@ input[type=submit]:hover {
 
 	<div class="container">
 		<form action="/action_page.php">
-			<input type="text" id="fname" name="firstname" placeholder="Your name.."> 
-			<input type="text" id="lname" name="lastname" placeholder="Your last name..">
-			<textarea id="subject" name="subject" placeholder="Write something.." style="height: 200px"></textarea>
+			<input type="text" id="fname" name="firstname" value="<%=board.getTitle()%>"> 
+			<input type="text" id="lname" name="lastname" value="<%=board.getWriter()%>">
+			<textarea id="subject" name="subject" style="height: 200px"><%=board.getContent() %></textarea>
 			<input type="button" value="목록">
 			<input type="button" value="수정">
 			<input type="button" value="삭제">
